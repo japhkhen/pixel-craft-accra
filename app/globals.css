@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --color-mist: #f4f3ee;
+  --color-ink: #12241c;
+  --color-muted: #5c6b64;
+  --color-sky: #0f3d30;
+  --color-sky-deep: #0a2b22;
+  --color-lime: #c8f24a;
+  --color-lime-deep: #b3de32;
+  --color-forest: #0f3d30;
+  --color-line: #e4e6e0;
+  --color-paper: #ffffff;
+  --shadow-card: 0 16px 40px rgb(15 61 48 / 0.08);
+  --shadow-lift: 0 22px 50px rgb(15 61 48 / 0.16);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-mist);
+  color: var(--color-ink);
+}
+
+::selection {
+  background: #0f3d30;
+  color: #c8f24a;
+}
+
+:focus-visible {
+  outline: 2px solid #0f3d30;
+  outline-offset: 3px;
+}
+
+dialog {
+  margin: auto;
+  max-height: calc(100vh - 2rem);
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+dialog::backdrop {
+  background: rgb(15 61 48 / 0.55);
+}
+
+.skill-bar {
+  transition: width 0.9s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .skill-bar {
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
