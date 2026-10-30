@@ -6,7 +6,9 @@ import { Container } from "@/components/Container";
 import { ProjectCard } from "@/components/ProjectCard";
 import { projects, type ProjectCategory } from "@/lib/data";
 
-const filters: Array<"All" | ProjectCategory> = ["All", "Web", "Mobile", "Platforms"];
+type ProjectFilter = "All" | ProjectCategory;
+
+const filters: ProjectFilter[] = ["All", "Web", "Mobile", "Platforms"];
 
 const kindToFilter: Record<string, ProjectCategory> = {
   web: "Web",
@@ -16,8 +18,8 @@ const kindToFilter: Record<string, ProjectCategory> = {
 
 export function ProjectBrowser() {
   const params = useSearchParams();
-  const requested = kindToFilter[params.get("kind") ?? ""] ?? "All";
-  const [filter, setFilter] = useState(requested);
+  const requested: ProjectFilter = kindToFilter[params.get("kind") ?? ""] ?? "All";
+  const [filter, setFilter] = useState<ProjectFilter>(requested);
 
   useEffect(() => {
     setFilter(requested);
